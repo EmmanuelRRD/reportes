@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <title>Taller 2 Alejo</title>
+</head>
+
+<body>
+
+    <div class="container">
+            <h1 style="text-align: center;">Ejemplo 1</h1>
+            <p id="texto1">Texto Ejemplo</p>
+            <button class="btn btn-dark" id="btnOcultar" onclick="Ocultar()">Ocultar</button>
+            <button class="btn btn-success" id="btnMostrar" onclick="Mostrar()">Mostrar</button>
+
+            <h1 style="text-align: center;">Ejemplo 2</h1>
+            <p id="texto2">Texto Ejemplo</p>
+            <button class="btn btn-primary" id="btnCambiar" onclick="Cambiar()">Cambiar</button>
+            <button class="btn btn-primary" id="btnCambiar" onclick="Regresar()">Regresar</button>
+
+            <h1 style="text-align: center;">Ejemplo 3</h1>
+            <h3 >Eventos</h3>
+
+            <input type="text" id="inputTxt">
+
+            <h1 style="text-align: center;">Ejemplo 4</h1>
+            <h3>Lista dinamica</h3>
+
+            <input type="text" id="inputLista">
+            <button class="btn btn-dark" id="btnAgg">Agregar</button>
+
+            <ul id="lista"></ul>
+            
+    </div>
+
+    <script>
+        function Mostrar() {
+            $("#texto1").show();
+        }
+
+        function Ocultar() {
+            $("#texto1").hide();
+        }
+
+        //Ejemplo 2: Cambiar el elemnto html
+        function Cambiar() {
+            $("#texto2").html("Texto cambiado con JQuery").css({ "color": "white", "background-color": "black" });
+
+            //document.getElementById("texto2").innerHTML = "Texto cambiado con JQuery";
+        }
+
+        function Regresar() {
+            $("#texto2").html("Texto cambiado con JQuery").css({ "color": "black", "background-color": "white" });
+        }
+
+        //Ejemplo 3 
+
+
+
+        $("#inputTxt").on("keypress", function (e) {//Con este se le otrorga una funcion ligada a aun elemento
+            //alert(e.which);
+            alert(e.key);
+
+        })
+
+        //Ejemplo 4
+        $("#btnAgg").on("click", function () {
+            let texto = $("#inputLista").val();
+
+            let item = $("<li>").html(texto).append("<button class='btnEliminar btn btn-outline-primary'>Eliminar</button>");
+
+            $("#lista").append(item);
+        })
+
+        $("#lista").on("click", ".btnEliminar", function () {
+            $(this).parent().remove();
+        })
+
+    </script>
+</body>
+
+</html>
